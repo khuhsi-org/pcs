@@ -22,3 +22,11 @@ standby node, ensuring uninterrupted user access.
 ## Scope
 This repository focuses on infrastructure-level high availability.
 
+
+
+## Architecture Reference
+
+- High-Level Architecture Diagram & Docs:  
+  https://github.com/khushi-org/architecture-docs
+- Architecture Diagrams (specific):  
+  https://github.com/khushi-org/architecture-docs/tree/main/diagrams
