@@ -1,0 +1,17 @@
+#!/bin/bash
+
+echo "Updating system..."
+sudo apt update -y
+sudo apt upgrade -y
+
+echo "Installing Pacemaker, PCS and Corosync..."
+
+sudo apt install -y pacemaker=2.1.2-1 pcs=0.10.11 corosync=3.1.6
+
+sudo systemctl enable pcsd
+sudo systemctl start pcsd
+
+# Set password for hacluster user
+echo "hacluster:clusterpass" | sudo chpasswd
+
+echo "Controller base HA packages installed"

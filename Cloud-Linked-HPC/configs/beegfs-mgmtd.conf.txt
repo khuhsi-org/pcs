@@ -1,0 +1,2 @@
+storeMgmtdDirectory = /data/beegfs/mgmtd
+connAuthFile = /etc/beegfs/connauthfile

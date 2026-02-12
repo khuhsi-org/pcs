@@ -1,0 +1,38 @@
+import subprocess
+import os
+
+def run_command(command):
+    try:
+        result = subprocess.run(command, shell=True, capture_output=True, text=True)
+        return result.stdout.strip()
+    except Exception as e:
+        return f"Error: {e}"
+
+def check_slurm():
+    print("\n===== SLURM STATUS =====")
+    output = run_command("systemctl is-active slurmctld")
+    print("slurmctld:", output)
+
+def check_beegfs():
+    print("\n===== BEEGFS STATUS =====")
+    services = ["beegfs-mgmtd", "beegfs-meta", "beegfs-storage"]
+    for service in services:
+        status = run_command(f"systemctl is-active {service}")
+        print(f"{service}: {status}")
+
+def check_disk_usage():
+    print("\n===== DISK USAGE =====")
+    output = run_command("df -h")
+    print(output)
+
+def check_nodes():
+    print("\n===== NODE STATUS (SLURM) =====")
+    output = run_command("sinfo")
+    print(output)
+
+if __name__ == "__main__":
+    print("Cloud Linked HPC Cluster Monitoring Script")
+    check_slurm()
+    check_beegfs()
+    check_disk_usage()
+    check_nodes()

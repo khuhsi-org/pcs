@@ -1,0 +1,13 @@
+#!/bin/bash
+
+echo "Installing SLURM..."
+
+sudo apt install -y slurm-wlm
+
+sudo systemctl enable slurmctld
+sudo systemctl enable slurmd
+
+sudo systemctl start slurmctld
+sudo systemctl start slurmd
+
+echo "SLURM installed and services started"

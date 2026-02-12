@@ -1,0 +1,7 @@
+pcs cluster auth controller1 controller2 -u hacluster -p clusterpass
+pcs cluster setup --name slurm_cluster controller1 controller2
+pcs cluster start --all
+pcs property set stonith-enabled=false
+pcs property set no-quorum-policy=ignore
+
+

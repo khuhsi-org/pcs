@@ -1,0 +1,19 @@
+#!/bin/bash
+
+echo "Installing BeeGFS 8.2.2..."
+
+wget https://www.beegfs.io/release/beegfs_8.2.2/dists/beegfs-ubuntu22.04.list
+sudo mv beegfs-ubuntu22.04.list /etc/apt/sources.list.d/
+
+sudo apt update -y
+sudo apt install -y beegfs-mgmtd beegfs-meta beegfs-storage
+
+sudo systemctl enable beegfs-mgmtd
+sudo systemctl enable beegfs-meta
+sudo systemctl enable beegfs-storage
+
+sudo systemctl start beegfs-mgmtd
+sudo systemctl start beegfs-meta
+sudo systemctl start beegfs-storage
+
+echo "BeeGFS 8.2.2 installed"

@@ -1,0 +1,12 @@
+#!/bin/bash
+
+echo "Updating compute node..."
+sudo apt update -y
+
+echo "Installing SLURM client..."
+sudo apt install -y slurmd
+
+sudo systemctl enable slurmd
+sudo systemctl start slurmd
+
+echo "Compute node configured"
